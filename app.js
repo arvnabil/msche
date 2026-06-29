@@ -414,11 +414,12 @@ function updateUI() {
   document.getElementById("display-company-name").textContent = panelState.companyName;
   
   // Update current meeting details panel
+  const statusBadge = document.getElementById("room-status-badge");
   const meetingTitle = document.getElementById("meeting-title");
   const meetingOrg = document.getElementById("meeting-organizer");
   const meetingTime = document.getElementById("meeting-time-range");
+  const platformBadge = document.getElementById("meeting-platform");
   const countdownBox = document.getElementById("countdown-section");
-  const bannerText = document.getElementById("status-banner-text-content");
   
   // Action Buttons selectors
   const btnBook = document.getElementById("btn-book-now");
@@ -428,13 +429,13 @@ function updateUI() {
   
   // Render based on state
   if (panelState.status === "maintenance") {
+    statusBadge.textContent = "Maintenance";
     meetingTitle.textContent = "Under Maintenance";
     meetingOrg.textContent = "Unavailable for bookings";
     meetingTime.textContent = "Please use alternative meeting facilities on this floor.";
+    platformBadge.style.display = "none";
     countdownBox.style.display = "none";
     clearCheckinTimer();
-    
-    if (bannerText) bannerText.textContent = `Room Maintenance • ${panelState.roomName}`;
     
     // Buttons
     btnBook.style.display = "none";
@@ -443,13 +444,13 @@ function updateUI() {
     btnEnd.style.display = "none";
   } 
   else if (panelState.status === "offline") {
+    statusBadge.textContent = "Offline Mode";
     meetingTitle.textContent = "Offline / Connection Lost";
     meetingOrg.textContent = "Displaying cached calendar schedule";
     meetingTime.textContent = "Ad-hoc bookings disabled until synchronization restored.";
+    platformBadge.style.display = "none";
     countdownBox.style.display = "none";
     clearCheckinTimer();
-    
-    if (bannerText) bannerText.textContent = `Device Offline • Cached Schedule Mode`;
     
     // Buttons
     btnBook.style.display = "none";
@@ -459,6 +460,7 @@ function updateUI() {
   }
   else if (panelState.currentMeeting) {
     const meeting = panelState.currentMeeting;
+    statusBadge.textContent = panelState.status === "ending-soon" ? "Ending Soon" : "Occupied";
     meetingTitle.textContent = meeting.title;
     meetingOrg.textContent = `Organized by: ${meeting.organizer}`;
     
@@ -466,12 +468,14 @@ function updateUI() {
     const endStr = formatTime(meeting.end);
     meetingTime.textContent = `${startStr} - ${endStr} (${getDurationMinutes(meeting.start, meeting.end)} min)`;
     
-    countdownBox.style.display = "block";
-    
-    if (bannerText) {
-      const bannerTextVal = panelState.status === "ending-soon" ? "Ending Soon" : "Occupied";
-      bannerText.textContent = `${bannerTextVal} until ${formatTime(meeting.end, false)} • ${panelState.roomName}`;
+    if (meeting.platform && meeting.platform !== "None") {
+      platformBadge.style.display = "flex";
+      platformBadge.innerHTML = `${PLATFORM_ICONS[meeting.platform]} ${meeting.platform}`;
+    } else {
+      platformBadge.style.display = "none";
     }
+    
+    countdownBox.style.display = "block";
     
     // Button setup
     btnBook.style.display = "none";
@@ -487,6 +491,7 @@ function updateUI() {
   } 
   else {
     // Available
+    statusBadge.textContent = "Available";
     meetingTitle.textContent = "Ready for Bookings";
     meetingOrg.textContent = "No ongoing sessions";
     
@@ -498,10 +503,9 @@ function updateUI() {
       meetingTime.textContent = "No more meetings scheduled for today.";
     }
     
+    platformBadge.style.display = "none";
     countdownBox.style.display = "none";
     clearCheckinTimer();
-    
-    if (bannerText) bannerText.textContent = `Room Available • ${panelState.roomName}`;
     
     // Buttons
     btnBook.style.display = "flex";

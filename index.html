@@ -15,289 +15,309 @@
   <!-- MAIN KIOSK CONTAINER -->
   <main class="kiosk-container" id="kiosk-container">
     
-    <!-- TOP BAR (HEADER) -->
-    <header class="panel-header">
-      <div class="brand-info">
-        <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-        </svg>
-        <div class="brand-names">
-          <span class="company-name" id="display-company-name">ACTiV</span>
-          <span class="building-name">HQ - Floor 4</span>
-        </div>
-      </div>
-      
-      <!-- Sensor Stats & Time info -->
-      <div class="top-meta-row">
-        <div class="sensor-readings">
-          <span class="sensor-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-inline"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
-            24°C
-          </span>
-          <span class="sensor-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-inline"><path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-11-7-11S5 10.7 5 15a7 7 0 0 0 7 7z"/></svg>
-            55%
-          </span>
-        </div>
-        <div class="clock-block">
-          <span class="header-time" id="current-time">12:00 PM</span>
-          <span class="header-date" id="current-date">Mon, Jun 29</span>
-        </div>
-      </div>
-    </header>
-
-    <!-- CONTENT GRID (2 COLUMNS) -->
-    <div class="content-grid">
-      
-      <!-- LEFT COLUMN: Room name and current slot status -->
-      <section class="left-pane">
-        <div class="room-title-area">
-          <h1 class="room-title" id="display-room-name">Alpha Meeting Room</h1>
-          <div class="room-badges">
-            <span class="badge cap-badge">12 Pax</span>
-            <span class="badge loc-badge">Zone A</span>
+    <!-- LEFT SIDE: Room Information, Current Meeting, and Action Controls -->
+    <section class="left-section">
+      <!-- HEADER -->
+      <header class="panel-header">
+        <div class="brand-info">
+          <!-- ACTiV Logo SVG -->
+          <svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          <div class="brand-names">
+            <span class="company-name" id="display-company-name">ACTiV</span>
+            <span class="building-name">HQ - Tower A</span>
           </div>
         </div>
+        
+        <div class="system-clock-container">
+          <div class="time-display" id="current-time">12:00:00 PM</div>
+          <div class="date-display-row">
+            <span class="date-display" id="current-date">Monday, June 29, 2026</span>
+            <span class="timezone-badge" id="current-timezone">GMT+07:00</span>
+          </div>
+        </div>
+      </header>
 
-        <!-- Room Feature Badges -->
+      <!-- ROOM INFO CARD -->
+      <div class="room-info-card glass-panel">
+        <div class="room-primary-info">
+          <h1 class="room-name" id="display-room-name">Alpha Meeting Room</h1>
+          <div class="room-location">
+            <span class="floor-badge">Floor 4</span>
+            <span class="capacity-badge">
+              <svg class="icon-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              12 Pax
+            </span>
+          </div>
+        </div>
+        
+        <!-- ROOM FEATURES -->
         <div class="room-features" id="room-features-list">
-          <span class="feature-item" title="WiFi">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><line x1="12" y1="20" x2="12.01" y2="20" stroke-width="3"></line></svg>
+          <span class="feature-item" title="WiFi Available">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20" stroke-width="3"></line></svg>
+            WiFi
           </span>
           <span class="feature-item" title="TV Display">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            4K TV
           </span>
-          <span class="feature-item" title="Camera">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path></svg>
+          <span class="feature-item" title="Conference Camera">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            Camera
           </span>
-          <span class="feature-item" title="HDMI">
+          <span class="feature-item" title="Audio Speakers">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><circle cx="12" cy="14" r="4"></circle><line x1="12" y1="6" x2="12.01" y2="6"></line></svg>
+            Speaker
+          </span>
+          <span class="feature-item" title="Whiteboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="9" y1="9" x2="15" y2="9"></line><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="13" y2="17"></line></svg>
+            Board
+          </span>
+          <span class="feature-item" title="HDMI Connection">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            HDMI
           </span>
         </div>
+      </div>
 
-        <!-- Main Display / Current Meeting Content -->
-        <div class="current-status-display">
-          <div class="meeting-details">
-            <div class="status-indicator-dot"></div>
-            <h2 class="meeting-subject" id="meeting-title">Ready for Bookings</h2>
-            <p class="meeting-host" id="meeting-organizer">No ongoing sessions</p>
-            <p class="meeting-time" id="meeting-time-range">Feel free to book a slot directly from this panel.</p>
-            
-            <!-- Check-in Warning banner -->
-            <div class="checkin-warning-box" id="checkin-warning" style="display: none;">
-              <svg class="pulse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-              <span id="checkin-warning-text">Check-in required in 10:00</span>
-            </div>
+      <!-- MAIN STATE / CURRENT MEETING CARD -->
+      <div class="current-meeting-card glass-panel" id="current-meeting-container">
+        <div class="status-indicator-bar"></div>
+        <div class="meeting-details-wrapper">
+          <div class="meeting-header-row">
+            <span class="room-status-badge" id="room-status-badge">Available</span>
+            <span class="platform-badge" id="meeting-platform" style="display: none;">
+              <!-- Dynamic Icon inserted via JS -->
+              Google Meet
+            </span>
           </div>
-
-          <!-- Countdown area -->
-          <div class="countdown-card" id="countdown-section" style="display: none;">
-            <div class="countdown-val" id="countdown-timer">00:00:00</div>
-            <div class="countdown-lbl" id="countdown-label">Time Remaining</div>
-          </div>
-        </div>
-
-        <!-- Elegant Kiosk Control Toolbar -->
-        <div class="action-toolbar">
-          <button class="pill-btn btn-primary" id="btn-book-now" onclick="openModal('book-modal')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            <span>Book Room</span>
-          </button>
           
-          <button class="pill-btn btn-success" id="btn-check-in" style="display: none;" onclick="triggerCheckIn()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-            <span>Check In</span>
-          </button>
+          <h2 class="meeting-title" id="meeting-title">Ready for Bookings</h2>
+          <p class="meeting-organizer" id="meeting-organizer">No ongoing sessions</p>
+          <p class="meeting-time-range" id="meeting-time-range">Feel free to book a slot directly from this panel.</p>
           
-          <button class="pill-btn btn-warning" id="btn-extend" style="display: none;" onclick="openModal('extend-modal')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            <span>Extend</span>
-          </button>
-
-          <button class="pill-btn btn-danger" id="btn-end-meeting" style="display: none;" onclick="endCurrentMeetingEarly()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"></rect></svg>
-            <span>End Now</span>
-          </button>
-
-          <button class="pill-btn btn-outline" id="btn-other-rooms" onclick="openModal('other-rooms-modal')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
-            <span>Rooms</span>
-          </button>
-
-          <button class="pill-btn btn-outline" id="btn-qr" onclick="openModal('qr-modal')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-            <span>QR Link</span>
-          </button>
-        </div>
-      </section>
-      
-      <!-- RIGHT COLUMN: Timeline Calendar Track -->
-      <section class="right-pane">
-        <div class="timeline-header">
-          <h3>Daily Schedule</h3>
-          <span class="meeting-count" id="schedule-counter">3 Meetings</span>
-        </div>
-        
-        <!-- Timeline wrapper -->
-        <div class="timeline-container" id="schedule-list">
-          <!-- Calendar track slots generated dynamically -->
-        </div>
-        
-        <!-- Mobile Sync QR Mini widget -->
-        <div class="qr-dock-card" onclick="openModal('qr-modal')">
-          <div id="mini-qr-code" class="qr-mini-holder"></div>
-          <div class="qr-dock-info">
-            <h4>Quick Booking Link</h4>
-            <p>Scan to pair device or book calendar slots instantly.</p>
+          <!-- Countdown display -->
+          <div class="countdown-section" id="countdown-section" style="display: none;">
+            <div class="countdown-label" id="countdown-label">Time Remaining</div>
+            <div class="countdown-timer" id="countdown-timer">00:00:00</div>
+          </div>
+          
+          <!-- Check-in Warning banner -->
+          <div class="checkin-warning-banner" id="checkin-warning" style="display: none;">
+            <svg class="pulse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span id="checkin-warning-text">Check-in required in 10:00</span>
           </div>
         </div>
-      </section>
+      </div>
+
+      <!-- PANEL CONTROLS / ACTION BUTTONS -->
+      <nav class="action-grid">
+        <button class="btn btn-primary btn-ripple" id="btn-book-now" onclick="openModal('book-modal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><line x1="12" y1="14" x2="12" y2="18"></line><line x1="10" y1="16" x2="14" y2="16"></line></svg>
+          <span>Book Now</span>
+        </button>
+        
+        <button class="btn btn-success btn-ripple" id="btn-check-in" style="display: none;" onclick="triggerCheckIn()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span>Check In</span>
+        </button>
+        
+        <button class="btn btn-warning btn-ripple" id="btn-extend" style="display: none;" onclick="openModal('extend-modal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>Extend</span>
+        </button>
+
+        <button class="btn btn-danger btn-ripple" id="btn-end-meeting" style="display: none;" onclick="endCurrentMeetingEarly()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect></svg>
+          <span>End Meeting</span>
+        </button>
+
+        <button class="btn btn-secondary btn-ripple" id="btn-other-rooms" onclick="openModal('other-rooms-modal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+          <span>Other Rooms</span>
+        </button>
+
+        <button class="btn btn-secondary btn-ripple" id="btn-qr" onclick="openModal('qr-modal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Scan QR</span>
+        </button>
+      </nav>
+    </section>
+
+    <!-- RIGHT SIDE: Scrollable Schedule & Mini Calendars -->
+    <section class="right-section">
+      <div class="section-header">
+        <h2 class="section-title">Today's Schedule</h2>
+        <span class="schedule-counter" id="schedule-counter">3 meetings</span>
+      </div>
+
+      <!-- UPCOMING SCHEDULE CONTAINER -->
+      <div class="schedule-list-wrapper" id="schedule-list">
+        <!-- Dynamic Schedule items inserted via JS -->
+      </div>
       
-    </div>
-
-    <!-- FULL WIDTH BOTTOM STATUS BAND (VISIBLE FROM 5 METERS AWAY) -->
-    <div class="bottom-status-bar" id="bottom-status-banner">
-      <span class="status-banner-text" id="status-banner-text-content">Room Available • Alpha Room</span>
-    </div>
-
-    <!-- METADATA FOOTER (ABOVE BANNER) -->
-    <footer class="panel-footer">
-      <div class="foot-group">
-        <span class="foot-dot online" id="footer-connection-dot"></span>
-        <span id="footer-connection-text">Online</span>
+      <!-- MINI QR WIDGET -->
+      <div class="qr-widget glass-panel" onclick="openModal('qr-modal')">
+        <div class="qr-widget-text">
+          <h3>Quick Booking / Check-in</h3>
+          <p>Scan this code with your mobile device to book instantly or join virtual meeting.</p>
+        </div>
+        <div class="qr-widget-image" id="mini-qr-code">
+          <!-- Canvas or static QR generated -->
+        </div>
       </div>
-      <div class="foot-group">
-        <span class="foot-lbl">Sync:</span>
-        <span class="foot-val" id="footer-sync-time">Just Now</span>
-      </div>
-      <div class="foot-group">
-        <span class="foot-lbl">Device:</span>
-        <span class="foot-val" id="footer-device-name">ACTiV-WRP1000-04</span>
-      </div>
-      <div class="foot-group right-align">
-        <span>Powered by ACTiV Calendar Bridge</span>
-      </div>
-    </footer>
-
+    </section>
   </main>
 
-  <!-- MODALS -->
-  <!-- BOOKING MODAL -->
+  <!-- FOOTER DEVICE STATUS (ALIGNED TO BOTTOM OF KIOSK VIEWPORT) -->
+  <footer class="kiosk-footer" id="kiosk-footer">
+    <div class="status-group">
+      <div class="status-indicator online" id="footer-connection-dot"></div>
+      <span class="status-label" id="footer-connection-text">Online</span>
+    </div>
+    <div class="status-group separator-left">
+      <span class="status-header">Sync:</span>
+      <span class="status-value" id="footer-sync-time">Just Now</span>
+    </div>
+    <div class="status-group separator-left">
+      <span class="status-header">Network:</span>
+      <span class="status-value" id="footer-network-type">PoE (LAN)</span>
+    </div>
+    <div class="status-group separator-left">
+      <span class="status-header">Device ID:</span>
+      <span class="status-value" id="footer-device-name">ACTiV-WRP1000-04</span>
+    </div>
+    <div class="status-group separator-left logo-watermark">
+      <span>Powered by ACTiV Calendar Bridge v1.2</span>
+    </div>
+  </footer>
+
+  <!-- ============================================== -->
+  <!-- MODAL WINDOWS -->
+  <!-- ============================================== -->
+
+  <!-- BOOK ROOM POPUP -->
   <div class="modal-overlay" id="book-modal">
     <div class="modal-card glass-panel modal-slide-in">
       <div class="modal-header">
-        <h2>Ad-hoc Room Booking</h2>
+        <h2>Book This Room</h2>
         <button class="close-btn" onclick="closeModal('book-modal')">&times;</button>
       </div>
       <form id="book-room-form" onsubmit="handleBookRoom(event)">
         <div class="form-group">
-          <label>Meeting Subject *</label>
-          <input type="text" id="book-title" placeholder="e.g., Project Sync" required value="Ad-hoc Meeting">
+          <label for="book-title">Meeting Title *</label>
+          <input type="text" id="book-title" placeholder="e.g., Marketing Weekly Alignment" required value="Ad-hoc Meeting">
         </div>
         <div class="form-group">
-          <label>Organizer *</label>
-          <input type="text" id="book-organizer" placeholder="e.g., Diana Prince" required value="Visitor Client">
+          <label for="book-organizer">Organizer Name *</label>
+          <input type="text" id="book-organizer" placeholder="e.g., Jane Doe" required value="Visitor Client">
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Duration</label>
+            <label for="book-duration">Duration (Minutes)</label>
             <select id="book-duration" onchange="updateBookTimeSummary()">
               <option value="15">15 Minutes</option>
               <option value="30" selected>30 Minutes</option>
               <option value="45">45 Minutes</option>
               <option value="60">60 Minutes</option>
               <option value="90">90 Minutes</option>
+              <option value="120">120 Minutes</option>
             </select>
           </div>
           <div class="form-group">
-            <label>Meeting Integration</label>
+            <label for="book-platform">Meeting Link Integration</label>
             <select id="book-platform">
-              <option value="None">None (Local Only)</option>
+              <option value="None">None (Local Room Only)</option>
               <option value="Google Meet">Google Meet</option>
-              <option value="Zoom">Zoom</option>
-              <option value="Teams">Teams</option>
+              <option value="Zoom">Zoom Meeting</option>
+              <option value="Teams">Microsoft Teams</option>
             </select>
           </div>
         </div>
         <div class="booking-time-summary" id="booking-time-summary">
-          Slot: --:-- to --:--
+          Target Slot: --:-- to --:--
         </div>
         <div class="modal-actions">
-          <button type="button" class="pill-btn btn-outline" onclick="closeModal('book-modal')">Cancel</button>
-          <button type="submit" class="pill-btn btn-primary">Create Booking</button>
+          <button type="button" class="btn btn-secondary" onclick="closeModal('book-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Booking</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- EXTEND MODAL -->
+  <!-- EXTEND MEETING POPUP -->
   <div class="modal-overlay" id="extend-modal">
     <div class="modal-card glass-panel modal-slide-in">
       <div class="modal-header">
-        <h2>Extend Booking</h2>
+        <h2>Extend Meeting</h2>
         <button class="close-btn" onclick="closeModal('extend-modal')">&times;</button>
       </div>
       <div class="extend-presets-grid">
-        <button class="preset-btn" onclick="handleExtend(15)">+15 min</button>
-        <button class="preset-btn" onclick="handleExtend(30)">+30 min</button>
-        <button class="preset-btn" onclick="handleExtend(60)">+60 min</button>
+        <button class="preset-btn" onclick="handleExtend(15)">+15 Min</button>
+        <button class="preset-btn" onclick="handleExtend(30)">+30 Min</button>
+        <button class="preset-btn" onclick="handleExtend(60)">+60 Min</button>
       </div>
       <div class="custom-extend-row">
-        <label>Custom Mins:</label>
+        <label for="custom-extend-mins">Custom Minutes:</label>
         <input type="number" id="custom-extend-mins" value="45" min="5" max="180">
-        <button class="pill-btn btn-primary" onclick="handleCustomExtend()">Extend</button>
+        <button class="btn btn-primary" onclick="handleCustomExtend()">Extend</button>
       </div>
       <div class="extend-conflict-warning" id="extend-conflict-warning" style="display: none;">
         Cannot extend! Conflicting meeting starts in <span id="conflict-time-left">10 minutes</span>.
       </div>
       <div class="modal-actions">
-        <button type="button" class="pill-btn btn-outline" onclick="closeModal('extend-modal')">Close</button>
+        <button type="button" class="btn btn-secondary" onclick="closeModal('extend-modal')">Close</button>
       </div>
     </div>
   </div>
 
-  <!-- OTHER ROOMS MODAL -->
+  <!-- OTHER ROOMS STATUS -->
   <div class="modal-overlay" id="other-rooms-modal">
     <div class="modal-card glass-panel modal-slide-in large-modal">
       <div class="modal-header">
-        <h2>Nearby Room Availability</h2>
+        <h2>Adjacent & Other Rooms</h2>
         <button class="close-btn" onclick="closeModal('other-rooms-modal')">&times;</button>
       </div>
       <div class="other-rooms-list" id="other-rooms-list">
-        <!-- Managed dynamically -->
+        <!-- Dynamic other rooms list -->
       </div>
       <div class="modal-actions">
-        <button type="button" class="pill-btn btn-outline" onclick="closeModal('other-rooms-modal')">Close</button>
+        <button type="button" class="btn btn-secondary" onclick="closeModal('other-rooms-modal')">Close</button>
       </div>
     </div>
   </div>
 
-  <!-- QR EXPAND MODAL -->
+  <!-- QR CODE MODAL -->
   <div class="modal-overlay" id="qr-modal">
     <div class="modal-card glass-panel modal-slide-in qr-modal-card">
       <div class="modal-header">
-        <h2>Mobile Control Code</h2>
+        <h2>Scan QR Code</h2>
         <button class="close-btn" onclick="closeModal('qr-modal')">&times;</button>
       </div>
       <div class="qr-zoom-container">
         <div id="zoomed-qr-code"></div>
         <p class="qr-desc">Scan to book slots, view schedule calendar, or check-in to this room directly from your personal device.</p>
-        <span class="qr-link-badge">ACTiV Bridge Link</span>
+        <div class="qr-urls">
+          <span class="qr-link-badge">Calendar Hub Integration</span>
+        </div>
       </div>
       <div class="modal-actions">
-        <button type="button" class="pill-btn btn-outline" onclick="closeModal('qr-modal')">Close</button>
+        <button type="button" class="btn btn-secondary" onclick="closeModal('qr-modal')">Close</button>
       </div>
     </div>
   </div>
 
-  <!-- SIMULATOR SIDEBAR -->
+  <!-- ============================================== -->
+  <!-- DEMO / INTERACTIVE CONTROLLER (SIDEBAR SIMULATOR) -->
+  <!-- ============================================== -->
   <aside class="control-simulator collapsed" id="control-simulator">
     <button class="toggle-sim-btn" onclick="toggleSimulator()" title="Toggle Panel Simulator">
       <svg class="sim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
       <span>SIMULATOR</span>
     </button>
     <div class="simulator-body">
-      <h3>Kiosk Controller</h3>
+      <h3>Panel Controller</h3>
       <p class="sim-intro">Simulate hardware inputs and middleware status triggers.</p>
       
       <div class="control-group">
@@ -314,41 +334,41 @@
       <div class="control-group">
         <label>Check-in Simulation</label>
         <div class="checkbox-row">
-          <button class="btn-sm btn-warning" onclick="simTriggerCheckInWarning()">Trigger Check-In Warning</button>
-          <button class="btn-sm btn-danger" onclick="simForceCheckInTimeout()">Force Check-In Timeout</button>
+          <button class="btn btn-sm btn-warning" onclick="simTriggerCheckInWarning()">Trigger Check-In Countdown</button>
+          <button class="btn btn-sm btn-danger" onclick="simForceCheckInTimeout()">Force Check-In Timeout</button>
         </div>
       </div>
 
       <div class="control-group">
         <label>Display Format & Scaling</label>
         <div class="button-row">
-          <button class="btn-sm" onclick="setPanelResolution(1024, 600)">1024x600 (8")</button>
-          <button class="btn-sm" onclick="setPanelResolution(1280, 800)">1280x800 (10")</button>
-          <button class="btn-sm" onclick="setPanelResolution(1920, 1080)">1920x1080 (15"+)</button>
+          <button class="btn btn-sm" onclick="setPanelResolution(1024, 600)">1024x600 (8")</button>
+          <button class="btn btn-sm" onclick="setPanelResolution(1280, 800)">1280x800 (10")</button>
+          <button class="btn btn-sm" onclick="setPanelResolution(1920, 1080)">1920x1080 (15"+)</button>
         </div>
         <div class="button-row" style="margin-top: 5px;">
-          <button class="btn-sm" onclick="setPanelOrientation('landscape')">Landscape</button>
-          <button class="btn-sm" onclick="setPanelOrientation('portrait')">Portrait</button>
-          <button class="btn-sm btn-secondary" onclick="resetPanelScaling()">Fit screen</button>
+          <button class="btn btn-sm" onclick="setPanelOrientation('landscape')">Landscape</button>
+          <button class="btn btn-sm" onclick="setPanelOrientation('portrait')">Portrait</button>
+          <button class="btn btn-sm btn-secondary" onclick="resetPanelScaling()">Fit screen</button>
         </div>
       </div>
 
       <div class="control-group">
         <label>Network Connectivity</label>
         <div class="button-row">
-          <button class="btn-sm btn-success" id="sim-net-online" onclick="simSetOnline(true)">Online</button>
-          <button class="btn-sm" id="sim-net-offline" onclick="simSetOnline(false)">Offline</button>
+          <button class="btn btn-sm btn-success" id="sim-net-online" onclick="simSetOnline(true)">Online</button>
+          <button class="btn btn-sm" id="sim-net-offline" onclick="simSetOnline(false)">Offline</button>
         </div>
       </div>
 
       <div class="control-group">
-        <label>Configuration Settings</label>
+        <label>Active Calibration Settings</label>
         <div class="form-group-sim">
-          <span>Device:</span>
+          <span>Device Name:</span>
           <input type="text" id="sim-device-name-input" value="ACTiV-WRP1000-04" onchange="simUpdateDeviceName(this.value)">
         </div>
         <div class="form-group-sim" style="margin-top: 5px;">
-          <span>Room:</span>
+          <span>Room Name:</span>
           <input type="text" id="sim-room-name-input" value="Alpha Meeting Room" onchange="simUpdateRoomName(this.value)">
         </div>
       </div>
