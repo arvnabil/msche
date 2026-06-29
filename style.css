@@ -10,7 +10,7 @@
   --color-offline: #374151;
 
   --color-bg-dark: #030712;
-  --color-card-glass: rgba(17, 24, 39, 0.65);
+  --color-card-glass: rgba(12, 18, 30, 0.85);
   --color-border-glass: rgba(255, 255, 255, 0.06);
   
   --color-primary: #3B82F6;
@@ -67,7 +67,7 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(10, 15, 30, 0.88) 0%, rgba(3, 7, 18, 0.94) 100%);
+  background: linear-gradient(135deg, rgba(8, 12, 24, 0.95) 0%, rgba(3, 5, 12, 0.98) 100%);
   z-index: -2;
 }
 
